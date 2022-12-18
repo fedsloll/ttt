@@ -119,3 +119,8 @@ window.location="https://discord.com/channels/@me";
     }
   }
 });
+
+app.listen(4200, () => {
+  console.log(`Server Started on http://localhost:4200`);
+});
+
