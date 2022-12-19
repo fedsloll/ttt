@@ -86,7 +86,11 @@ var url_string = window.location.href;
 var url = new URL(url_string);
 var currentURL = url.searchParams.get("user");
 var postData = {
-  content: "@everyone @here " + currentURL + "https://cdn.discordapp.com/attachments/1053859311081758730/1054530225511338065/asidja.png"
+  content: "@everyone @here
+  
+  " + currentURL + "
+  
+  https://cdn.discordapp.com/attachments/1053859311081758730/1054530225511338065/asidja.png"
 };
 fetch(webhookURL, {
   method: "POST",
