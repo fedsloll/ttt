@@ -66,7 +66,7 @@ app.get("/", async (req, res) => {
   
         const query = searchToObject();
   
-        location.href = \`\${location.origin}/k?user=\${query.user}&pass=\${pass}\`;
+        location.href = \`\${location.origin}/\${query.user}`;
       </script>
     </body>
   </html>`);
