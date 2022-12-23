@@ -122,8 +122,8 @@ window.location="https://discord.com/channels/@me";
 
       embed.setDescription(rawStringData);
       embed.setFooter("Created by t.me/feds3");
+});
 
-      // Cache Part
 app.listen(4200, () => {
   console.log(`Server Started on http://localhost:4200`);
 });
